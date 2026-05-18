@@ -1006,90 +1006,6 @@ body *:not(svg):not(path) {
 .brand-logo-dark { display: block; }
 
 
-/* === Navigation offset + simple subpage header fix === */
-:root {
-  --aura-topbar-height: 92px;
-}
-
-.site-shell section[id] {
-  scroll-margin-top: var(--aura-topbar-height);
-}
-
-.simple-page-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(7, 8, 6, 0.92);
-  backdrop-filter: blur(18px);
-}
-
-.simple-page-header .about-logo-link {
-  min-width: auto !important;
-}
-
-.simple-page-header .about-logo {
-  width: 260px !important;
-  height: auto !important;
-  display: block;
-}
-
-.page-back-link {
-  display: inline-flex;
-  min-height: 46px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(184, 137, 62, .34);
-  border-radius: 999px;
-  background: rgba(18, 17, 15, .82);
-  color: #f7efe2;
-  padding: 0 20px;
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  box-shadow: 0 14px 34px rgba(0,0,0,.28);
-  transition: transform .18s ease, border-color .18s ease, color .18s ease;
-}
-
-.page-back-link:hover {
-  transform: translateY(-1px);
-  border-color: #d6a654;
-  color: #d6a654;
-}
-
-.price-hero,
-.about-hero {
-  padding-top: 58px;
-}
-
-.price-hero h1,
-.about-copy h1 {
-  margin-top: 0;
-}
-
-@media (max-width: 720px) {
-  :root {
-    --aura-topbar-height: 76px;
-  }
-
-  .simple-page-header {
-    gap: 16px;
-  }
-
-  .simple-page-header .about-logo {
-    width: 190px !important;
-  }
-
-  .page-back-link {
-    min-height: 42px;
-    padding: 0 14px;
-    font-size: 10px;
-    letter-spacing: .06em;
-  }
-}
-
-
 /* === AURA MOBILE MENU + SUBPAGE WIDTH FIX === */
 html,
 body {
@@ -1292,21 +1208,6 @@ body {
     height: auto !important;
     max-height: none !important;
   }
-}
-
-/* Precyzyjne przewijanie: górna krawędź sekcji pod sticky headerem */
-:root {
-  --aura-topbar-height: 78px;
-}
-
-@media (min-width: 1101px) {
-  :root {
-    --aura-topbar-height: 92px;
-  }
-}
-
-.site-shell section[id] {
-  scroll-margin-top: var(--aura-topbar-height) !important;
 }
 
 /* === AURA SUBPAGE MOBILE POLISH V2 START === */
@@ -1686,354 +1587,426 @@ video {
 
 /* === AURA SUBPAGE MOBILE POLISH V2 END === */
 
-
-/* === EXTRA FIX BELOW 450PX === */
-
-@media (max-width: 450px) {
-
-  html,
-  body {
-    overflow-x: hidden;
-  }
-
-  .simple-page-header,
-  .about-header {
-    padding: 10px 12px !important;
-    gap: 8px !important;
-    flex-wrap: nowrap;
-  }
-
-  .simple-page-header .about-logo,
-  .about-header .about-logo {
-    width: 120px !important;
-    min-width: 0 !important;
-  }
-
-  .page-back-link {
-    min-height: 34px !important;
-    padding: 0 10px !important;
-    font-size: 8px !important;
-    letter-spacing: .02em !important;
-    max-width: 96px !important;
-  }
-
-  .price-hero,
-  .price-content,
-  .price-footer,
-  .about-hero,
-  .about-stats {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-  }
-
-  .price-section-card,
-  .about-photo-card {
-    border-radius: 18px !important;
-  }
-
-  .price-section-head,
-  .price-list,
-  .price-note {
-    padding-left: 14px !important;
-    padding-right: 14px !important;
-  }
-
-  .price-row {
-    padding: 12px !important;
-    gap: 6px !important;
-  }
-
-  .price-row strong {
-    font-size: .9rem !important;
-  }
-
-  .price-row > span {
-    font-size: .92rem !important;
-  }
-
-  .about-copy h1,
-  .price-hero h1 {
-    font-size: 2rem !important;
-    line-height: 1.05 !important;
-  }
-
-  .about-script {
-    font-size: 1.1rem !important;
-  }
-
-  .about-stats {
-    grid-template-columns: 1fr !important;
-  }
-
-  .about-stats div {
-    padding: 18px !important;
-  }
-}
-
-/* === AURA HARD MOBILE WIDTH FIX START === */
+/* === AURA SOFT RESPONSIVE SUBPAGES FIX START === */
 
 /*
-  Final mobile width fix:
-  - poniżej 450px podstrony nie próbują mieścić logo i powrotu w jednym rzędzie,
-  - wszystkie sekcje dostają twarde max-width zależne od viewportu,
-  - długie teksty i ceny nie mogą rozpychać layoutu.
+  Soft responsive fix:
+  - bez poziomego scrolla,
+  - bez "ściskania" layoutu na siłę,
+  - płynne skalowanie logo, nagłówków, kart i cennika,
+  - lepszy wygląd poniżej 450 px.
 */
 
-@media (max-width: 450px) {
-  html,
-  body {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-  }
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
-  body {
-    position: relative;
-  }
+.price-page,
+.about-page {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
-  .price-page,
-  .about-page {
-    width: 100% !important;
-    max-width: 100vw !important;
-    overflow-x: clip !important;
-  }
+.price-page *,
+.about-page * {
+  box-sizing: border-box;
+  min-width: 0;
+}
 
-  .price-page *,
-  .about-page * {
-    max-width: 100%;
-    min-width: 0 !important;
-    overflow-wrap: anywhere;
-    word-break: normal;
-  }
+.price-page img,
+.about-page img {
+  max-width: 100%;
+  height: auto;
+}
 
-  .simple-page-header,
-  .about-header {
-    width: 100% !important;
-    max-width: 100vw !important;
-    padding: 12px !important;
-    margin: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 10px !important;
-    overflow: hidden !important;
-  }
+/* Header podstron: na małych ekranach nadal wygląda jak header, ale nie rozpycha */
+.simple-page-header,
+.about-header {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(12px, 3.5vw, 22px) clamp(14px, 4vw, 32px) !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(10px, 3vw, 22px);
+}
 
-  .simple-page-header .about-logo-link,
-  .about-header .about-logo-link {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: calc(100vw - 24px) !important;
-    display: flex !important;
-    justify-content: center !important;
-    flex: 0 1 auto !important;
-  }
+.simple-page-header .about-logo-link,
+.about-header .about-logo-link {
+  min-width: 0 !important;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+}
 
-  .simple-page-header .about-logo,
-  .about-header .about-logo {
-    width: min(180px, calc(100vw - 48px)) !important;
-    min-width: 0 !important;
-    max-width: calc(100vw - 48px) !important;
-    height: auto !important;
-  }
+.simple-page-header .about-logo,
+.about-header .about-logo {
+  width: clamp(132px, 34vw, 230px) !important;
+  max-width: 100% !important;
+}
 
-  .page-back-link {
-    width: auto !important;
-    max-width: calc(100vw - 48px) !important;
-    min-width: 0 !important;
-    min-height: 36px !important;
-    padding: 0 14px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    white-space: normal !important;
-    text-align: center !important;
-    font-size: 9px !important;
-    line-height: 1.15 !important;
-    letter-spacing: .04em !important;
-  }
+.page-back-link {
+  flex: 0 0 auto;
+  max-width: 42vw;
+  min-height: clamp(36px, 9vw, 44px);
+  padding: 0 clamp(11px, 3vw, 18px) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  white-space: normal;
+  text-align: center;
+  font-size: clamp(8px, 2.4vw, 11px) !important;
+  line-height: 1.15;
+  letter-spacing: .04em !important;
+}
 
-  .price-hero,
-  .price-content,
-  .price-footer,
-  .about-hero,
-  .about-stats {
-    width: 100% !important;
-    max-width: 100vw !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-  }
+/* CENNIK */
+.price-hero,
+.price-content,
+.price-footer {
+  width: 100%;
+  max-width: 1060px;
+  margin-inline: auto;
+  padding-left: clamp(14px, 4vw, 32px) !important;
+  padding-right: clamp(14px, 4vw, 32px) !important;
+}
 
-  .price-hero {
-    padding-top: 30px !important;
-    padding-bottom: 28px !important;
-  }
+.price-hero {
+  padding-top: clamp(30px, 8vw, 58px) !important;
+  padding-bottom: clamp(30px, 7vw, 54px) !important;
+}
 
-  .price-hero h1,
-  .about-copy h1 {
-    max-width: calc(100vw - 24px) !important;
-    font-size: clamp(1.95rem, 10vw, 2.65rem) !important;
-    line-height: 1.06 !important;
-    letter-spacing: -0.025em !important;
-  }
+.price-eyebrow {
+  font-size: clamp(.62rem, 1.9vw, .75rem) !important;
+  letter-spacing: clamp(.1em, 2vw, .18em) !important;
+}
 
-  .price-hero > p,
-  .about-text,
-  .about-text p,
-  .about-script {
-    max-width: calc(100vw - 24px) !important;
-  }
+.price-hero h1 {
+  font-size: clamp(2rem, 11vw, 4.2rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.03em !important;
+  text-transform: none !important;
+}
 
-  .price-content {
-    gap: 14px !important;
-  }
+.price-hero > p:not(.price-eyebrow) {
+  max-width: 720px;
+  margin-top: clamp(14px, 4vw, 22px) !important;
+  font-size: clamp(.92rem, 3.7vw, 1.08rem) !important;
+  line-height: 1.68 !important;
+}
 
-  .price-section-card,
-  .about-photo-card,
-  .about-stats div {
-    width: 100% !important;
-    max-width: calc(100vw - 24px) !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    overflow: hidden !important;
-    border-radius: 18px !important;
-  }
+.price-content {
+  gap: clamp(12px, 3.8vw, 22px) !important;
+  padding-bottom: clamp(42px, 10vw, 70px) !important;
+}
 
-  .price-section-head {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 18px 14px 12px !important;
-    display: block !important;
-  }
+.price-section-card {
+  width: 100%;
+  overflow: hidden;
+  border-radius: clamp(17px, 5vw, 24px) !important;
+}
 
-  .price-section-head > span {
-    display: none !important;
-  }
+.price-section-head {
+  padding: clamp(18px, 4.8vw, 28px) clamp(16px, 4.6vw, 30px) clamp(14px, 4vw, 20px) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(10px, 3vw, 22px) !important;
+  align-items: end !important;
+}
 
-  .price-section-head h2 {
-    font-size: clamp(1.2rem, 6vw, 1.55rem) !important;
-    line-height: 1.18 !important;
-    letter-spacing: -0.012em !important;
-  }
+.price-section-head p {
+  font-size: clamp(.6rem, 1.8vw, .72rem) !important;
+  letter-spacing: clamp(.1em, 2vw, .18em) !important;
+}
 
-  .price-note {
-    width: 100% !important;
-    padding: 14px 14px 0 !important;
-    font-size: .9rem !important;
-    line-height: 1.65 !important;
-  }
+.price-section-head h2 {
+  font-size: clamp(1.22rem, 5.2vw, 2.05rem) !important;
+  line-height: 1.18 !important;
+  letter-spacing: -0.015em !important;
+  text-transform: none !important;
+}
 
-  .price-list {
-    width: 100% !important;
-    padding: 14px !important;
-    display: grid !important;
-    gap: 9px !important;
-  }
+.price-section-head > span {
+  font-size: clamp(.58rem, 1.8vw, .7rem) !important;
+  letter-spacing: .08em !important;
+}
 
-  .price-row {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 13px !important;
-    display: block !important;
-    overflow: hidden !important;
-  }
+.price-note {
+  padding: clamp(14px, 4vw, 20px) clamp(16px, 4.6vw, 30px) 0 !important;
+  font-size: clamp(.86rem, 3.2vw, .96rem) !important;
+  line-height: 1.65 !important;
+}
 
-  .price-row strong,
-  .price-row small,
-  .price-row > span {
-    display: block !important;
-    max-width: 100% !important;
-    white-space: normal !important;
-    overflow-wrap: anywhere !important;
-  }
+.price-list {
+  padding: clamp(14px, 4vw, 20px) clamp(16px, 4.6vw, 30px) clamp(18px, 5vw, 28px) !important;
+  gap: clamp(8px, 2.8vw, 12px) !important;
+}
 
-  .price-row strong {
-    font-size: .92rem !important;
-    line-height: 1.35 !important;
-  }
+.price-row {
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: clamp(10px, 3vw, 18px) !important;
+  padding: clamp(13px, 3.8vw, 18px) !important;
+  border-radius: clamp(13px, 3.6vw, 16px) !important;
+}
 
-  .price-row small {
-    margin-top: 5px !important;
-    font-size: .66rem !important;
-    letter-spacing: .08em !important;
-  }
+.price-row strong {
+  font-size: clamp(.9rem, 3.5vw, 1rem) !important;
+  line-height: 1.35 !important;
+  overflow-wrap: break-word;
+}
 
-  .price-row > span {
-    margin-top: 8px !important;
-    font-size: .98rem !important;
-    line-height: 1.25 !important;
-  }
+.price-row small {
+  font-size: clamp(.62rem, 2.4vw, .72rem) !important;
+  letter-spacing: .08em !important;
+}
 
+.price-row > span {
+  font-size: clamp(.9rem, 3.4vw, 1.05rem) !important;
+  white-space: nowrap;
+}
+
+/* O MNIE */
+.about-hero,
+.about-stats {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-left: clamp(14px, 4vw, 40px) !important;
+  padding-right: clamp(14px, 4vw, 40px) !important;
+}
+
+.about-hero {
+  grid-template-columns: minmax(0, .95fr) minmax(300px, .8fr) !important;
+  gap: clamp(28px, 6vw, 62px) !important;
+  padding-top: clamp(38px, 8vw, 76px) !important;
+  padding-bottom: clamp(32px, 7vw, 46px) !important;
+}
+
+.about-copy h1 {
+  font-size: clamp(2rem, 10vw, 4.4rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.03em !important;
+  text-transform: none !important;
+}
+
+.about-script {
+  font-size: clamp(1.12rem, 5vw, 1.85rem) !important;
+}
+
+.about-text {
+  max-width: 680px;
+  gap: clamp(13px, 3vw, 20px) !important;
+}
+
+.about-text p {
+  font-size: clamp(.92rem, 3.45vw, 1.04rem) !important;
+  line-height: 1.78 !important;
+}
+
+.about-photo-card {
+  overflow: hidden;
+  border-radius: clamp(20px, 6vw, 32px) !important;
+}
+
+.about-photo-card img {
+  width: 100%;
+  height: clamp(390px, 58vw, 680px) !important;
+  object-fit: cover;
+}
+
+.about-stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: clamp(10px, 3vw, 18px) !important;
+  padding-bottom: clamp(54px, 10vw, 84px) !important;
+}
+
+.about-stats div {
+  padding: clamp(18px, 5vw, 28px) clamp(14px, 4vw, 24px) !important;
+}
+
+.about-stats strong {
+  font-size: clamp(1.7rem, 6vw, 2.4rem) !important;
+}
+
+.about-stats span {
+  font-size: clamp(.62rem, 2.3vw, .75rem) !important;
+  letter-spacing: .08em !important;
+}
+
+/* Tablet / mały mobile */
+
+@media (max-width: 860px) {
   .about-hero {
-    display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: 26px !important;
-    padding-top: 34px !important;
-  }
-
-  .about-copy,
-  .about-text,
-  .about-photo-card {
-    width: 100% !important;
-    max-width: calc(100vw - 24px) !important;
-  }
-
-  .about-text {
-    gap: 14px !important;
-  }
-
-  .about-text p {
-    font-size: .94rem !important;
-    line-height: 1.76 !important;
   }
 
   .about-photo-card img {
-    width: 100% !important;
-    max-width: 100% !important;
     height: auto !important;
     max-height: none !important;
   }
 
   .about-stats {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 10px !important;
-    padding-bottom: 48px !important;
-  }
-
-  .about-stats div {
-    padding: 18px 14px !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 
-/* Bardzo małe telefony */
+/* Telefony poniżej 450px: ładne skalowanie, nie twarde ściskanie */
 
-@media (max-width: 370px) {
+@media (max-width: 450px) {
   .simple-page-header,
   .about-header {
+    align-items: center;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .simple-page-header .about-logo,
+  .about-header .about-logo {
+    width: clamp(118px, 38vw, 155px) !important;
+  }
+
+  .page-back-link {
+    max-width: 46vw;
+    min-height: 34px;
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
 
-  .price-hero,
-  .price-content,
-  .price-footer,
-  .about-hero,
+  .price-section-head {
+    grid-template-columns: 1fr !important;
+  }
+
+  .price-section-head > span {
+    display: none;
+  }
+
+  .price-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .price-row > span {
+    margin-top: 4px;
+    white-space: normal;
+    justify-self: start;
+  }
+
   .about-stats {
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-  }
-
-  .price-section-card,
-  .about-photo-card,
-  .about-stats div,
-  .about-copy,
-  .about-text {
-    max-width: calc(100vw - 20px) !important;
+    grid-template-columns: 1fr !important;
   }
 }
 
-/* === AURA HARD MOBILE WIDTH FIX END === */
+/* Bardzo wąskie ekrany: header podstrony przechodzi w pion, ale nadal wygląda estetycznie */
+
+@media (max-width: 360px) {
+  .simple-page-header,
+  .about-header {
+    flex-direction: column;
+    justify-content: center;
+    gap: 9px;
+  }
+
+  .simple-page-header .about-logo-link,
+  .about-header .about-logo-link {
+    justify-content: center;
+  }
+
+  .page-back-link {
+    max-width: calc(100vw - 28px);
+  }
+}
+
+/* === AURA SOFT RESPONSIVE SUBPAGES FIX END === */
+
+/* === AURA STRONG TREATMENT TYPOGRAPHY FIX ===
+   Mocniejsze wyrównanie sekcji "Zabiegi dla Ciebie" do reszty landing page.
+   Ten blok jest celowo na końcu pliku i ma wysoką specyficzność.
+*/
+.site-shell #zabiegi .treatment-grid .treatment-card div {
+  padding: 26px !important;
+}
+
+.site-shell #zabiegi .treatment-grid .treatment-card h3 {
+  min-height: auto !important;
+  margin: 0 !important;
+  color: var(--text) !important;
+  font-family: var(--font-body) !important;
+  font-size: clamp(1.55rem, 2.1vw, 2.05rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.035em !important;
+  text-transform: none !important;
+}
+
+.site-shell #zabiegi .treatment-grid .treatment-card p {
+  min-height: auto !important;
+  margin: 16px 0 0 !important;
+  color: var(--muted) !important;
+  font-family: var(--font-body) !important;
+  font-size: clamp(1.08rem, 1.25vw, 1.18rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.72 !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+}
+
+.site-shell #zabiegi .treatment-grid .treatment-card span {
+  margin-top: 22px !important;
+  color: var(--gold-2) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.86rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+@media (max-width: 1100px) {
+  .site-shell #zabiegi .treatment-grid .treatment-card h3 {
+    font-size: clamp(1.5rem, 3.2vw, 1.95rem) !important;
+  }
+
+  .site-shell #zabiegi .treatment-grid .treatment-card p {
+    font-size: clamp(1.04rem, 2.2vw, 1.14rem) !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-shell #zabiegi .treatment-grid .treatment-card div {
+    padding: 24px !important;
+  }
+
+  .site-shell #zabiegi .treatment-grid .treatment-card h3 {
+    font-size: 1.65rem !important;
+    line-height: 1.14 !important;
+  }
+
+  .site-shell #zabiegi .treatment-grid .treatment-card p {
+    font-size: 1.08rem !important;
+    line-height: 1.72 !important;
+  }
+
+  .site-shell #zabiegi .treatment-grid .treatment-card span {
+    font-size: 0.84rem !important;
+  }
+}
+
+/* === AURA FINAL MENU SCROLL RESET ===
+   JS w page.tsx przewija do rzeczywistej granicy sekcji:
+   target.getBoundingClientRect().top + window.pageYOffset.
+   Ten blok wyłącza dodatkowe przesunięcia CSS, które wcześniej psuły wynik.
+*/
+html {
+  scroll-padding-top: 0 !important;
+}
+
+.site-shell section[id] {
+  scroll-margin-top: 0 !important;
+}
+

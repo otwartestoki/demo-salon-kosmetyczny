@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "Pani Kosmetolog | Medycyna estetyczna Łódź",
+  title: "Aura Beauty Studio",
   description:
-    "Elegancki landing page salonu medycyny estetycznej: zabiegi, efekty, opinie, mapa i rezerwacja Booksy.",
+    "Aura Beauty Studio — nowoczesne zabiegi beauty i medycyny estetycznej.",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="pl">
       <body>{children}</body>

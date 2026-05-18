@@ -111,6 +111,19 @@ function BeforeAfterSlider({
   after: string;
 }) {
   const [value, setValue] = useState(50);
+  function scrollToSection(href: string) {
+    const target = document.querySelector(href);
+    if (!(target instanceof HTMLElement)) return;
+
+    const y = target.getBoundingClientRect().top + window.pageYOffset;
+
+    window.scrollTo({
+      top: Math.round(y),
+      behavior: "smooth",
+    });
+
+    setMobileMenuOpen(false);
+  }
 
   return (
     <figure className="before-after-card">
@@ -139,6 +152,7 @@ function BeforeAfterSlider({
 
 export default function Home() {
   const [googleReviews, setGoogleReviews] = useState<GoogleReviewsResponse | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -150,21 +164,6 @@ export default function Home() {
     return () => { active = false; };
   }, []);
 
-  function scrollToSection(href: string) {
-    setIsMenuOpen(false);
-    const target = document.querySelector(href);
-    if (!(target instanceof HTMLElement)) return;
-
-    const topbar = document.querySelector(".topbar");
-    const topbarHeight = topbar instanceof HTMLElement ? topbar.offsetHeight : 0;
-    const targetTop = target.getBoundingClientRect().top + window.scrollY;
-
-    window.scrollTo({
-      top: Math.max(targetTop - topbarHeight, 0),
-      behavior: "smooth",
-    });
-  }
-
   useEffect(() => {
     if (!window.location.hash) return;
 
@@ -172,6 +171,19 @@ export default function Home() {
       scrollToSection(window.location.hash);
     });
   }, []);
+  function scrollToSection(href: string) {
+    const target = document.querySelector(href);
+    if (!(target instanceof HTMLElement)) return;
+
+    const y = target.getBoundingClientRect().top + window.pageYOffset;
+
+    window.scrollTo({
+      top: Math.round(y),
+      behavior: "smooth",
+    });
+
+    setMobileMenuOpen(false);
+  }
 
   return (
     <main className="site-shell">
