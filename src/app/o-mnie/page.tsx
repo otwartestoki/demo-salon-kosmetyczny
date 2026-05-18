@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
-const BOOKSY_URL = "https://booksy.com/pl-pl/";
 
 export default function OMniePage() {
   return (
     <main className="about-page">
-      <header className="about-header">
+      <header className="about-header simple-page-header">
         <Link
           href="/"
           className="about-logo-link"
@@ -16,29 +15,15 @@ export default function OMniePage() {
             src="/logos/logo-dark.svg"
             alt="Aura Beauty Studio"
             className="about-logo"
-            style={{
-              width: "220px",
-              height: "auto",
-              display: "block",
-            }}
           />
         </Link>
-        <nav className="about-nav" aria-label="Menu strony">
-          <Link href="/">Strona główna</Link>
-          <Link href="/o-mnie">O mnie</Link>
-          <Link href="/#zabiegi">Zabiegi</Link>
-          <Link href="/cennik">Cennik</Link>
-          <Link href="/#opinie">Opinie</Link>
-          <Link href="/#kontakt">Kontakt</Link>
-        </nav>
-        <a href={BOOKSY_URL} className="booksy-button about-booksy" aria-label="Rezerwacja przez Booksy">
-          <img src="/pani/booksy-logo-white-v8.png" alt="Booksy" />
-        </a>
+        <Link href="/" className="page-back-link" aria-label="Powrót na stronę główną">
+          ← Powrót na stronę główną
+        </Link>
       </header>
 
       <section className="about-hero">
         <div className="about-copy">
-          <p className="about-eyebrow">Aura Beauty Studio</p>
           <h1>O mnie</h1>
           <p className="about-script">Twoje piękno. Moja pasja.</p>
 

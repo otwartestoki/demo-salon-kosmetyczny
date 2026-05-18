@@ -149,6 +149,28 @@ export default function Home() {
     return () => { active = false; };
   }, []);
 
+  function scrollToSection(href: string) {
+    const target = document.querySelector(href);
+    if (!(target instanceof HTMLElement)) return;
+
+    const topbar = document.querySelector(".topbar");
+    const topbarHeight = topbar instanceof HTMLElement ? topbar.offsetHeight : 0;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+      top: Math.max(targetTop - topbarHeight, 0),
+      behavior: "smooth",
+    });
+  }
+
+  useEffect(() => {
+    if (!window.location.hash) return;
+
+    window.requestAnimationFrame(() => {
+      scrollToSection(window.location.hash);
+    });
+  }, []);
+
   return (
     <main className="site-shell">
       <header className="topbar">
@@ -160,11 +182,7 @@ export default function Home() {
                 key={label}
                 type="button"
                 className="nav-scroll-link"
-                onClick={() => {
-                  const target = document.querySelector(href);
-                  if (!target) return;
-                  target.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
+                onClick={() => scrollToSection(href)}
               >
                 {label}
               </button>
@@ -518,7 +536,7 @@ export default function Home() {
           }
         `}</style>
       </section>
-<footer className="footer">Aura Beauty Studio · Szablon landing page · Dane przykładowe</footer>
+      <footer className="footer">Aura Beauty Studio · Szablon landing page · Dane przykładowe</footer>
     </main>
   );
 }
