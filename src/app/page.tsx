@@ -111,20 +111,6 @@ function BeforeAfterSlider({
   after: string;
 }) {
   const [value, setValue] = useState(50);
-  function scrollToSection(href: string) {
-    const target = document.querySelector(href);
-    if (!(target instanceof HTMLElement)) return;
-
-    const y = target.getBoundingClientRect().top + window.pageYOffset;
-
-    window.scrollTo({
-      top: Math.round(y),
-      behavior: "smooth",
-    });
-
-    setMobileMenuOpen(false);
-  }
-
   return (
     <figure className="before-after-card">
       <div className="compare" style={{ "--position": `${value}%` } as React.CSSProperties}>
@@ -182,7 +168,7 @@ export default function Home() {
       behavior: "smooth",
     });
 
-    setMobileMenuOpen(false);
+    setIsMenuOpen(false);
   }
 
   return (
