@@ -251,6 +251,7 @@ blockquote { margin: 30px 0 0; padding: 24px; border: 1px solid var(--line-soft)
   .about-photo-card img { height: auto; max-height: 760px; }
   .about-stats { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (max-width: 720px) {
   .about-header { padding: 15px 20px; }
   .about-logo-link { min-width: 155px; }
@@ -265,6 +266,7 @@ blockquote { margin: 30px 0 0; padding: 24px; border: 1px solid var(--line-soft)
 
 /* Aura fix v10: shared logo consistency */
 .aura-header-logo { width: 220px; height: auto; object-fit: contain; filter: drop-shadow(0 14px 30px rgba(0,0,0,.38)); }
+
 @media (max-width: 720px) { .aura-header-logo { width: 155px; } }
 
 
@@ -284,8 +286,6 @@ blockquote { margin: 30px 0 0; padding: 24px; border: 1px solid var(--line-soft)
   max-height: none !important;
   object-fit: contain !important;
 }
-
-
 
 @media (max-width: 720px) {
   .logo-image-link,
@@ -745,9 +745,6 @@ body,
   letter-spacing: -0.01em !important;
 }
 
-.contact-form button,
-.booksy-button,
-
 @media (max-width: 720px) {
   .hero-copy h1,
   .price-hero h1,
@@ -1091,3 +1088,952 @@ body *:not(svg):not(path) {
     letter-spacing: .06em;
   }
 }
+
+
+/* === AURA MOBILE MENU + SUBPAGE WIDTH FIX === */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.site-shell,
+.price-page,
+.about-page {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--panel) 92%, transparent);
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: 0 14px 34px var(--shadow);
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+@media (max-width: 1100px) {
+  .topbar {
+    overflow: visible;
+  }
+
+  .topbar-inner {
+    position: relative;
+    min-height: 76px;
+    padding: 12px 18px !important;
+    gap: 14px;
+  }
+
+  .topbar .logo-image-link {
+    min-width: 0 !important;
+    max-width: calc(100vw - 92px) !important;
+  }
+
+  .topbar .brand-logo {
+    width: min(220px, calc(100vw - 104px)) !important;
+    max-width: 100% !important;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 18px;
+    right: 18px;
+    z-index: 80;
+    display: none !important;
+    grid-template-columns: 1fr;
+    gap: 0 !important;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: color-mix(in srgb, var(--bg) 96%, transparent);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, .42);
+    backdrop-filter: blur(18px);
+  }
+
+  .main-nav.main-nav-open {
+    display: grid !important;
+  }
+
+  .main-nav a,
+  .main-nav .nav-scroll-link {
+    display: flex;
+    width: 100%;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    color: var(--text);
+    font-size: 13px !important;
+    letter-spacing: .08em !important;
+  }
+
+  .main-nav a:hover,
+  .main-nav .nav-scroll-link:hover {
+    background: color-mix(in srgb, var(--panel-2) 86%, var(--gold) 14%);
+    color: var(--gold-2);
+  }
+
+  .nav-divider {
+    width: 100% !important;
+    height: 1px !important;
+    margin: 8px 0;
+    background: var(--line-soft);
+  }
+}
+
+/* Podstrony: bez wychodzenia poza ekran na mobile */
+
+@media (max-width: 720px) {
+  .simple-page-header {
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 16px !important;
+    gap: 12px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .simple-page-header .about-logo-link {
+    min-width: 0 !important;
+    max-width: calc(100vw - 132px) !important;
+    flex: 1 1 auto;
+  }
+
+  .simple-page-header .about-logo {
+    width: min(170px, 100%) !important;
+    max-width: 100% !important;
+  }
+
+  .page-back-link {
+    flex: 0 0 auto;
+    max-width: 118px;
+    min-height: 40px;
+    padding: 0 12px !important;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.15;
+    font-size: 9px !important;
+    letter-spacing: .04em !important;
+  }
+
+  .price-hero,
+  .price-content,
+  .price-footer,
+  .about-hero,
+  .about-stats {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .price-section-card,
+  .about-photo-card,
+  .about-stats div {
+    max-width: 100%;
+  }
+
+  .price-section-head,
+  .price-list,
+  .price-note {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .price-row {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .price-row > span {
+    white-space: normal !important;
+    text-align: left;
+  }
+
+  .about-hero {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 28px !important;
+  }
+
+  .about-copy,
+  .about-text,
+  .about-photo-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .about-photo-card img {
+    width: 100%;
+    height: auto !important;
+    max-height: none !important;
+  }
+}
+
+/* Precyzyjne przewijanie: górna krawędź sekcji pod sticky headerem */
+:root {
+  --aura-topbar-height: 78px;
+}
+
+@media (min-width: 1101px) {
+  :root {
+    --aura-topbar-height: 92px;
+  }
+}
+
+.site-shell section[id] {
+  scroll-margin-top: var(--aura-topbar-height) !important;
+}
+
+/* === AURA SUBPAGE MOBILE POLISH V2 START === */
+
+/* Twarde zabezpieczenie przed poziomym rozpychaniem */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+iframe,
+video {
+  max-width: 100%;
+}
+
+.price-page,
+.about-page,
+.price-page *,
+.about-page * {
+  min-width: 0;
+}
+
+/* Prostszy, równy header podstron */
+.simple-page-header,
+.about-header {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  overflow: hidden;
+}
+
+.simple-page-header .about-logo-link,
+.about-header .about-logo-link {
+  min-width: 0 !important;
+  flex: 1 1 auto;
+}
+
+.simple-page-header .about-logo,
+.about-header .about-logo {
+  width: clamp(150px, 22vw, 260px) !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Przycisk powrotu ma się mieścić, a nie wypychać layout */
+.page-back-link {
+  flex: 0 0 auto;
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(184,137,62,.34);
+  border-radius: 999px;
+  padding: 0 16px;
+  background: rgba(18,17,15,.78);
+  color: #d6a654;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
+
+/* CENNIK — bardziej elegancki i mniej "rozjechany" */
+.price-page {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.price-hero,
+.price-content,
+.price-footer {
+  width: 100%;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(18px, 4vw, 32px) !important;
+  padding-right: clamp(18px, 4vw, 32px) !important;
+}
+
+.price-hero {
+  padding-top: clamp(34px, 6vw, 58px) !important;
+  padding-bottom: clamp(34px, 6vw, 54px) !important;
+  text-align: left;
+}
+
+.price-eyebrow {
+  margin-bottom: 12px !important;
+  font-size: .72rem !important;
+  letter-spacing: .18em !important;
+}
+
+.price-hero h1 {
+  margin: 0 !important;
+  font-size: clamp(2.35rem, 8vw, 4.25rem) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.035em !important;
+  text-transform: none !important;
+}
+
+.price-hero > p:not(.price-eyebrow) {
+  max-width: 720px;
+  margin-top: 18px !important;
+  font-size: clamp(.98rem, 2.4vw, 1.08rem) !important;
+  line-height: 1.75 !important;
+}
+
+.price-content {
+  display: grid;
+  gap: 18px !important;
+  padding-bottom: 58px !important;
+}
+
+.price-section-card {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 24px !important;
+}
+
+.price-section-head {
+  padding: 24px 26px 18px !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto;
+  gap: 14px !important;
+  align-items: end !important;
+}
+
+.price-section-head p {
+  margin-bottom: 7px !important;
+  font-size: .68rem !important;
+  letter-spacing: .16em !important;
+}
+
+.price-section-head h2 {
+  font-size: clamp(1.35rem, 3.8vw, 2.05rem) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.018em !important;
+  text-transform: none !important;
+}
+
+.price-section-head > span {
+  align-self: start;
+  padding-top: 4px;
+  font-size: .68rem !important;
+  letter-spacing: .1em !important;
+}
+
+.price-note {
+  padding: 18px 26px 0 !important;
+  font-size: .94rem !important;
+  line-height: 1.7 !important;
+}
+
+.price-list {
+  padding: 18px 26px 26px !important;
+  gap: 10px !important;
+}
+
+.price-row {
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 16px !important;
+  border-radius: 16px !important;
+  padding: 15px 18px !important;
+}
+
+.price-row strong {
+  font-size: .98rem !important;
+  line-height: 1.35 !important;
+  overflow-wrap: anywhere;
+}
+
+.price-row small {
+  font-size: .68rem !important;
+  letter-spacing: .1em !important;
+}
+
+.price-row > span {
+  font-size: 1rem !important;
+  white-space: nowrap;
+}
+
+/* O MNIE — ograniczenie szerokości i lepsza responsywność */
+.about-page {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.about-hero,
+.about-stats {
+  width: 100%;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(18px, 4vw, 40px) !important;
+  padding-right: clamp(18px, 4vw, 40px) !important;
+}
+
+.about-hero {
+  grid-template-columns: minmax(0, .95fr) minmax(320px, .8fr) !important;
+  gap: clamp(28px, 5vw, 56px) !important;
+}
+
+.about-copy,
+.about-text,
+.about-photo-card {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.about-copy h1 {
+  font-size: clamp(2.35rem, 7vw, 4.4rem) !important;
+  line-height: 1.04 !important;
+  letter-spacing: -0.032em !important;
+  text-transform: none !important;
+}
+
+.about-script {
+  font-size: clamp(1.25rem, 2.4vw, 1.85rem) !important;
+}
+
+.about-text p {
+  font-size: clamp(.96rem, 1.55vw, 1.05rem) !important;
+  line-height: 1.82 !important;
+}
+
+.about-photo-card img {
+  width: 100%;
+  height: clamp(420px, 58vw, 680px) !important;
+  object-fit: cover;
+}
+
+.about-stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+}
+
+.about-stats div {
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Mobile: karta po karcie, bez przewijania poziomego */
+
+@media (max-width: 860px) {
+  .simple-page-header,
+  .about-header {
+    padding: 13px 16px !important;
+    gap: 10px !important;
+  }
+
+  .simple-page-header .about-logo,
+  .about-header .about-logo {
+    width: clamp(132px, 42vw, 190px) !important;
+  }
+
+  .page-back-link {
+    max-width: 132px;
+    min-height: 38px;
+    padding: 0 12px !important;
+    font-size: 9px !important;
+    letter-spacing: .035em !important;
+    white-space: normal;
+  }
+
+  .price-hero,
+  .price-content,
+  .price-footer,
+  .about-hero,
+  .about-stats {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .price-hero {
+    padding-top: 36px !important;
+    text-align: left;
+  }
+
+  .price-content {
+    gap: 16px !important;
+  }
+
+  .price-section-card {
+    border-radius: 20px !important;
+  }
+
+  .price-section-head {
+    padding: 21px 18px 16px !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .price-section-head > span {
+    display: none;
+  }
+
+  .price-note {
+    padding: 16px 18px 0 !important;
+  }
+
+  .price-list {
+    padding: 16px 18px 20px !important;
+  }
+
+  .price-row {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 14px 15px !important;
+  }
+
+  .price-row > span {
+    white-space: normal !important;
+    justify-self: start;
+  }
+
+  .about-hero {
+    grid-template-columns: 1fr !important;
+    padding-top: 38px !important;
+    gap: 30px !important;
+  }
+
+  .about-photo-card {
+    border-radius: 22px !important;
+  }
+
+  .about-photo-card img {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .price-hero h1,
+  .about-copy h1 {
+    font-size: clamp(2.05rem, 11vw, 3rem) !important;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr !important;
+  }
+
+  .about-stats strong {
+    font-size: 2rem !important;
+  }
+
+  .about-stats span {
+    font-size: .68rem !important;
+    letter-spacing: .08em !important;
+  }
+}
+
+/* === AURA SUBPAGE MOBILE POLISH V2 END === */
+
+
+/* === EXTRA FIX BELOW 450PX === */
+
+@media (max-width: 450px) {
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .simple-page-header,
+  .about-header {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+    flex-wrap: nowrap;
+  }
+
+  .simple-page-header .about-logo,
+  .about-header .about-logo {
+    width: 120px !important;
+    min-width: 0 !important;
+  }
+
+  .page-back-link {
+    min-height: 34px !important;
+    padding: 0 10px !important;
+    font-size: 8px !important;
+    letter-spacing: .02em !important;
+    max-width: 96px !important;
+  }
+
+  .price-hero,
+  .price-content,
+  .price-footer,
+  .about-hero,
+  .about-stats {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .price-section-card,
+  .about-photo-card {
+    border-radius: 18px !important;
+  }
+
+  .price-section-head,
+  .price-list,
+  .price-note {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .price-row {
+    padding: 12px !important;
+    gap: 6px !important;
+  }
+
+  .price-row strong {
+    font-size: .9rem !important;
+  }
+
+  .price-row > span {
+    font-size: .92rem !important;
+  }
+
+  .about-copy h1,
+  .price-hero h1 {
+    font-size: 2rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .about-script {
+    font-size: 1.1rem !important;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr !important;
+  }
+
+  .about-stats div {
+    padding: 18px !important;
+  }
+}
+
+/* === AURA HARD MOBILE WIDTH FIX START === */
+
+/*
+  Final mobile width fix:
+  - poniżej 450px podstrony nie próbują mieścić logo i powrotu w jednym rzędzie,
+  - wszystkie sekcje dostają twarde max-width zależne od viewportu,
+  - długie teksty i ceny nie mogą rozpychać layoutu.
+*/
+
+@media (max-width: 450px) {
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  body {
+    position: relative;
+  }
+
+  .price-page,
+  .about-page {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: clip !important;
+  }
+
+  .price-page *,
+  .about-page * {
+    max-width: 100%;
+    min-width: 0 !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .simple-page-header,
+  .about-header {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding: 12px !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    overflow: hidden !important;
+  }
+
+  .simple-page-header .about-logo-link,
+  .about-header .about-logo-link {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: calc(100vw - 24px) !important;
+    display: flex !important;
+    justify-content: center !important;
+    flex: 0 1 auto !important;
+  }
+
+  .simple-page-header .about-logo,
+  .about-header .about-logo {
+    width: min(180px, calc(100vw - 48px)) !important;
+    min-width: 0 !important;
+    max-width: calc(100vw - 48px) !important;
+    height: auto !important;
+  }
+
+  .page-back-link {
+    width: auto !important;
+    max-width: calc(100vw - 48px) !important;
+    min-width: 0 !important;
+    min-height: 36px !important;
+    padding: 0 14px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: normal !important;
+    text-align: center !important;
+    font-size: 9px !important;
+    line-height: 1.15 !important;
+    letter-spacing: .04em !important;
+  }
+
+  .price-hero,
+  .price-content,
+  .price-footer,
+  .about-hero,
+  .about-stats {
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .price-hero {
+    padding-top: 30px !important;
+    padding-bottom: 28px !important;
+  }
+
+  .price-hero h1,
+  .about-copy h1 {
+    max-width: calc(100vw - 24px) !important;
+    font-size: clamp(1.95rem, 10vw, 2.65rem) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.025em !important;
+  }
+
+  .price-hero > p,
+  .about-text,
+  .about-text p,
+  .about-script {
+    max-width: calc(100vw - 24px) !important;
+  }
+
+  .price-content {
+    gap: 14px !important;
+  }
+
+  .price-section-card,
+  .about-photo-card,
+  .about-stats div {
+    width: 100% !important;
+    max-width: calc(100vw - 24px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    overflow: hidden !important;
+    border-radius: 18px !important;
+  }
+
+  .price-section-head {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 18px 14px 12px !important;
+    display: block !important;
+  }
+
+  .price-section-head > span {
+    display: none !important;
+  }
+
+  .price-section-head h2 {
+    font-size: clamp(1.2rem, 6vw, 1.55rem) !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.012em !important;
+  }
+
+  .price-note {
+    width: 100% !important;
+    padding: 14px 14px 0 !important;
+    font-size: .9rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .price-list {
+    width: 100% !important;
+    padding: 14px !important;
+    display: grid !important;
+    gap: 9px !important;
+  }
+
+  .price-row {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 13px !important;
+    display: block !important;
+    overflow: hidden !important;
+  }
+
+  .price-row strong,
+  .price-row small,
+  .price-row > span {
+    display: block !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .price-row strong {
+    font-size: .92rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .price-row small {
+    margin-top: 5px !important;
+    font-size: .66rem !important;
+    letter-spacing: .08em !important;
+  }
+
+  .price-row > span {
+    margin-top: 8px !important;
+    font-size: .98rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .about-hero {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 26px !important;
+    padding-top: 34px !important;
+  }
+
+  .about-copy,
+  .about-text,
+  .about-photo-card {
+    width: 100% !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+
+  .about-text {
+    gap: 14px !important;
+  }
+
+  .about-text p {
+    font-size: .94rem !important;
+    line-height: 1.76 !important;
+  }
+
+  .about-photo-card img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .about-stats {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .about-stats div {
+    padding: 18px 14px !important;
+  }
+}
+
+/* Bardzo małe telefony */
+
+@media (max-width: 370px) {
+  .simple-page-header,
+  .about-header {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .price-hero,
+  .price-content,
+  .price-footer,
+  .about-hero,
+  .about-stats {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .price-section-card,
+  .about-photo-card,
+  .about-stats div,
+  .about-copy,
+  .about-text {
+    max-width: calc(100vw - 20px) !important;
+  }
+}
+
+/* === AURA HARD MOBILE WIDTH FIX END === */

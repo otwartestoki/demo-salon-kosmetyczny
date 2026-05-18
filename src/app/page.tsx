@@ -139,6 +139,7 @@ function BeforeAfterSlider({
 
 export default function Home() {
   const [googleReviews, setGoogleReviews] = useState<GoogleReviewsResponse | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -150,6 +151,7 @@ export default function Home() {
   }, []);
 
   function scrollToSection(href: string) {
+    setIsMenuOpen(false);
     const target = document.querySelector(href);
     if (!(target instanceof HTMLElement)) return;
 
@@ -176,7 +178,19 @@ export default function Home() {
       <header className="topbar">
         <div className="topbar-inner">
           <Logo />
-          <nav className="main-nav" aria-label="Menu główne">
+          <button
+            className="mobile-menu-toggle"
+            type="button"
+            aria-label={isMenuOpen ? "Zamknij menu" : "Otwórz menu"}
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+
+          <nav className={`main-nav ${isMenuOpen ? "main-nav-open" : ""}`} aria-label="Menu główne">
             {menuLanding.map(([label, href]) => (
               <button
                 key={label}
@@ -189,7 +203,7 @@ export default function Home() {
             ))}
             <span className="nav-divider" />
             {menuPages.map(([label, href]) => (
-              <Link key={label} href={href}>{label}</Link>
+              <Link key={label} href={href} onClick={() => setIsMenuOpen(false)}>{label}</Link>
             ))}
           </nav>
         </div>
