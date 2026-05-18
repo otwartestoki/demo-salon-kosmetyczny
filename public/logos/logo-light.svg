@@ -1,0 +1,9 @@
+<svg width="1200" height="260" viewBox="0 0 1200 260" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="260" fill="#f5efe7"/>
+<g transform="translate(35,28)">
+<path d="M90 170 L140 38 L190 170" stroke="#b88b4a" stroke-width="4.5" fill="none"/>
+<path d="M108 118 Q140 96 172 118" stroke="#b88b4a" stroke-width="4.5" fill="none"/>
+<path d="M176 34 Q238 60 226 128 Q214 192 150 208" stroke="#b88b4a" stroke-width="3.5" fill="none"/>
+<text x="285" y="118" font-size="118" font-weight="500" fill="#1d1b19" font-family="Georgia, 'Times New Roman', serif" letter-spacing="12">AURA</text>
+<text x="292" y="178" font-size="34" font-weight="600" fill="#b88b4a" font-family="Arial, sans-serif" letter-spacing="10">BEAUTY STUDIO</text>
+</g>
+</svg>
